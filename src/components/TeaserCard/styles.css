@@ -1,0 +1,175 @@
+.teaser-card {
+  @apply !rounded-sm border-5 border-1 border-solid border-gray-100 bg-gray-100 overflow-hidden;
+
+  .media img {
+    @apply w-full h-auto aspect-auto;
+  }
+
+  .title {
+    @apply text-xl font-semibold cursor-pointer font-clash;
+  }
+
+  .ingress {
+    @apply text-sm truncate; /* Keep the truncation by default */
+    max-height: 3em; /* Restrict height to simulate truncation */
+    overflow: hidden; /* Hide overflowed text */
+    transition: max-height 0.3s ease, whitespace 0.3s ease; /* Transition effect for smooth expansion */
+  }
+
+  /* When hovering over the entire teaser card */
+  &:hover .ingress {
+    @apply whitespace-normal; /* Remove truncation */
+    max-height: none; /* Allow full height expansion */
+  }
+}
+
+/* Styles for the 'withNumberHighlight' variant */
+.teaser-card.withNumberHighlight {
+  @apply flex
+  bg-frost-950 text-brand-900;
+
+  & .title {
+    @apply my-0;
+  }
+
+  & .number-badge {
+    @apply text-5xl !font-thin font-bold mr-4 font-clash;
+  }
+
+  & .content-box {
+    @apply flex flex-col gap-y-3;
+    & .ingress {
+      @apply text-[0.8rem] uppercase font-[200] text-gray-500 font-sans;
+    }
+
+    /* Labels styling */
+    & .labels {
+      @apply flex gap-1 text-[0.7rem] uppercase font-[200] text-gray-500 font-sans;
+      
+      & .label {
+        @apply ; /* Margin-right to separate labels */
+      }
+      
+      & .label span {
+        @apply text-gray-400; /* Color for the separator */
+      }
+    }
+  }
+}
+
+/* Styles for the 'mediaFeatured' variant */
+.teaser-card.mediaFeatured {
+  @apply flex gap-4 items-start; /* Reduced gap from 6 to 4 */
+
+  /* Media (Image) */
+  .media {
+    @apply w-48; /* Slightly smaller width to reduce spacing */
+  }
+
+  .media img {
+    @apply h-full aspect-square rounded-md object-cover;
+  }
+
+  /* Content Box */
+  & .content-box {
+    @apply flex flex-col justify-center gap-y-2 pt-2 h-full; /* Reduced vertical gap and padding */
+    
+    & .title {
+      @apply text-xl font-semibold text-gray-900 font-clash [font-size:_clamp(0.8rem,6vw,5em)] m-0 order-2; /* Title order maintained */
+    }
+
+    & .ingress {
+      @apply text-xs font-bold text-gray-600 font-sans order-1 m-0; /* Ingress appears first */
+    }
+
+    /* Labels styling */
+    & .labels {
+      @apply flex gap-1 text-[0.7rem] uppercase font-[200] text-gray-500 font-sans order-3 mt-auto;
+
+      & .label {
+        @apply text-gray-500;
+      }
+
+      & .separator {
+        @apply text-gray-400;
+      }
+    }
+  }
+}
+
+/* Styles for the 'textEmphasis' variant */
+.teaser-card.textEmphasis {
+  @apply flex flex-col items-start;
+
+  /* Media (Image) */
+  .media img {
+    @apply rounded-sm w-full object-cover mb-4;
+  }
+
+  /* Content Box */
+  & .content-box {
+    @apply flex flex-col justify-center gap-y-2 pt-2 h-full; /* Reduced vertical gap and padding */
+    
+    & .title {
+      @apply text-xl font-semibold text-gray-900 font-clash [font-size:_clamp(0.8rem,6vw,5em)] m-0 order-2; /* Title order maintained */
+    }
+
+    & .ingress {
+      @apply text-xs font-bold text-gray-600 font-sans order-1 m-0; /* Ingress appears first */
+    }
+
+    /* Labels styling */
+    & .labels {
+      @apply flex gap-1 text-[0.7rem] uppercase font-[200] text-gray-500 font-sans order-3 mt-auto;
+
+      & .label {
+        @apply text-gray-500;
+      }
+
+      & .separator {
+        @apply text-gray-400;
+      }
+    }
+  }
+}
+
+/* Styles for the 'largeMedia' variant */
+.teaser-card.largeMedia {
+  @apply relative overflow-hidden !rounded-lg;
+
+  .media {
+    @apply w-full h-full;
+
+    & img {
+      @apply w-full h-full object-cover;
+    }
+  }
+
+  /* Overlay content box */
+  & .content-box {
+    @apply absolute bottom-0 left-0 bg-gradient-to-t from-black/90 to-transparent text-white w-full px-5 pb-3;
+    max-width: 100%; /* Ensure it doesn’t overflow the card */
+    box-sizing: border-box; /* Include padding in width calculation */
+
+    & .title {
+      @apply text-4xl font-bold leading-tight font-clash text-white m-0;
+    }
+  
+    & .ingress {
+      @apply text-[1.1rem] leading-snug text-white opacity-90 font-sans break-words;
+    }
+  
+    /* Labels styling */
+    & .labels {
+      @apply flex gap-2 text-xs uppercase text-white;
+  
+      & .label {
+        @apply text-white;
+      }
+  
+      & .separator {
+        @apply text-gray-200;
+      }
+    }
+  }
+}
