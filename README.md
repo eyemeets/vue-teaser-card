@@ -20,6 +20,7 @@ The objective is to create a teaser card component that meets the following requ
 - **Vite**: Development server and bundler.
 - **TypeScript**: Provides type safety for the codebase.
 - **UnoCSS**: Used for styling with flexibility and responsiveness.
+- **Vitest**: Used for unit testing with flexibility and responsiveness.
 
 ## Getting Started
 
