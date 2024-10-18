@@ -1,0 +1,6 @@
+{
+  "public": "storybook-static",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rootDirectory": "./storybook-static"
+}
