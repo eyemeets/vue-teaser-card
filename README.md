@@ -19,7 +19,7 @@ The objective is to create a teaser card component that meets the following requ
 - **Storybook**: Used to document the component and provide usage examples.
 - **Vite**: Development server and bundler.
 - **TypeScript**: Provides type safety for the codebase.
-- **CSS Variables**: Used for flexibility in styling.
+- **UnoCSS**: Used for styling with flexibility and responsiveness.
 
 ## Getting Started
 
@@ -56,20 +56,52 @@ pnpm build-storybook
 ```
 
 ### Scripts
-The `package.json` file has been updated to accommodate Storybook 7 changes:
-- **storybook**: `sb dev` (previously `start-storybook`)
-- **build-storybook**: `sb build`
+The `package.json` file contains the following scripts for managing the project:
+- **dev**: `vite` (Run the development server)
+- **build**: `vue-tsc -b && vite build` (Build the project for production)
+- **preview**: `vite preview` (Preview the built project)
+- **storybook**: `sb dev` (Run Storybook)
+- **build-storybook**: `sb build` (Build the Storybook documentation)
+- **test**: `vitest` (Run unit tests)
 
-## Project Structure
-- **src/components**: Contains Vue components including the teaser card (`TeaserCard.vue`).
-- **src/assets**: Static assets for the components.
-- **.storybook**: Storybook configuration files for documenting components.
+### Project Structure
+```
+vue-teaser-card/
+├── .storybook/          # Storybook configuration files
+├── node_modules/        # Node.js modules
+├── public/              # Public assets
+├── src/
+│   ├── assets/          # Static assets for the components
+│   └── components/      # Vue components including TeaserCard.vue
+├── storybook-static/    # Built Storybook for deployment
+├── uno.config.ts        # UnoCSS configuration
+├── package.json         # Project metadata and scripts
+├── tsconfig.json        # TypeScript configuration
+├── vite.config.ts       # Vite configuration
+└── vercel.json          # Vercel deployment configuration
+```
 
 ## Features
 - **Title and Ingress**: The teaser card has a title (max 30 characters) and an ingress (max 120 characters).
 - **Event Handling**: Clicking the media or title triggers specific events, sending relevant data (`title` and `ID`).
 - **Hover Effect**: Displays the full ingress text on mouse hover.
 - **Storybook Documentation**: Provides usage examples and testing coverage of the teaser card component.
+
+## Deployment
+This project includes deployment via Vercel. Ensure that the `storybook-static` directory, which contains the built Storybook, is properly configured for deployment. To deploy the built Storybook:
+
+```bash
+vercel --prod
+```
+Make sure you have a `vercel.json` in the root directory:
+
+```json
+{
+  "public": "storybook-static",
+  "cleanUrls": true,
+  "trailingSlash": false
+}
+```
 
 ## Development Notes
 - Ensure that the code follows best practices for readability, efficiency, and maintainability.
@@ -83,10 +115,3 @@ The `package.json` file has been updated to accommodate Storybook 7 changes:
 
 ## License
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
-
-## Contact
-For technical questions, reach out to Daniel Hendricks at [daniel@eyemeets.com](mailto:daniel@eyemeets.com).
-
----
-
-We hope you find this project interesting and look forward to your feedback during the interview. Good luck!
